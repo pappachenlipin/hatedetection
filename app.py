@@ -7,4 +7,4 @@ from hate.pipeline.train_pipeline import Train_pipeline
 train_line = Train_pipeline()
 
 train_line.run_pipeline()
-print("Succeeded")
+print("Completed")
