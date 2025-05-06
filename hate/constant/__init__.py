@@ -24,10 +24,10 @@ DROP_COLUMNS = ['Unnamed: 0','count','hate_speech','offensive_language','neither
 
 # Define the Model Training Params
 
-NUMBER_OF_EPOCHS = 2
+NUMBER_OF_EPOCHS = 4
 TRAIN_TEST_SPLIT_RATIO = 0.20
 MODEL_TRAIN_ARTIFACTS_DIR = "ModelTrainArtifacts"
-TRAINED_MODEL_NAME = "HateModel"
+TRAINED_MODEL_NAME = "model.h5"
 BATCH_SIZE = 32
 X_TRAIN_FILE_NAME = "train_x.csv"
 Y_TRAIN_FILE_NAME = "train_y.csv"

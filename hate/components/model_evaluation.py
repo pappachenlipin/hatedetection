@@ -36,7 +36,7 @@ class ModelEvaluation:
         test_x = pd.read_csv(self.model_train_artifacts.x_test_path,index_col=0)
         logging.info("read the test target file")
         test_y = pd.read_csv(self.model_train_artifacts.y_test_path,index_col =0)
-
+        model_name = model
         #load the model
         model = keras.models.load_model(model)
         #load the tokenizer
@@ -59,6 +59,7 @@ class ModelEvaluation:
         print(f"-----------------{x_test.shape}--------------")
         print(f"-----------------{test_y.shape}--------------")
         accuracy = model.evaluate(test_sequences,test_y)
+        print(f"---Accuracy:---{accuracy} for model {model_name} --------")
         return accuracy
     def start_model_evaluation(self)->ModelEvalArtifacts:
         logging.info("Start Model Evaluation")
@@ -75,7 +76,7 @@ class ModelEvaluation:
         current_best_gcp_model = self.get_model_from_gcloud()
         if os.path.isfile(current_best_gcp_model):
             best_gc_model_accuracy = self.evaluate(current_best_gcp_model)
-            if best_gc_model_accuracy < current_best_gcp_model:
+            if best_gc_model_accuracy < model_accuracy:
                 is_best_model = True
         else:
             is_best_model = True

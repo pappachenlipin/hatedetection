@@ -7,8 +7,8 @@ from hate.entity.config_entity import ModelPushConfig
 from hate.entity.artifact_entity import ModelEvalArtifacts, ModelPushArtifacts
 from hate.configuration.gccloud_syncer import GCCloud
 
-class ModelPush:
-    def __init__(model_push_config:ModelPushConfig):
+class ModelPusher:
+    def __init__(self,model_push_config:ModelPushConfig):
         self.model_push_config = model_push_config
         self.gccloud = GCCloud()
     def initiate_model_push(self)->ModelPushArtifacts:

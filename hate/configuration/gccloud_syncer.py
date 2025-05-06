@@ -10,9 +10,9 @@ class GCCloud:
             os.system(command)
         except Exception as e:
             raise CustomException(e,sys) from e
-    def push_data_to_gcloud(bucket_name,file_name,file_path):
+    def push_data_to_gcloud(self,bucket_name,file_name,file_path):
 
-        command = f"gsutil cp {file_path}/{file_name} gs://{bucket_name}"
+        command = f"gsutil cp {file_path}/{file_name} gs://{bucket_name}/"
         logging.info("Run the command to push the file to GC Cloud")
         try:
             os.system(command)

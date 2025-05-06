@@ -23,7 +23,7 @@ class ModelTrain:
         y = raw_data['class']
 
         train_x, test_x, train_y, test_y = train_test_split(x,y, test_size = self.model_train_config.TRAIN_TEST_SPLIT_RATIO,random_state = 42)
-        os.makedirs(self.model_train_config.MODEL_TRAIN_ARTIFACTS_PATH, exist_ok = True)
+        os.makedirs(self.model_train_config.MODEL_TRAIN_PATH, exist_ok = True)
         train_x.to_csv(self.model_train_config.X_TRAIN_FILE_PATH)
 
         logging.info("End processing of split file")
@@ -64,7 +64,7 @@ class ModelTrain:
         test_y.to_csv(self.model_train_config.Y_TEST_FILE_PATH)
 
         logging.info("Create the Model Artifacts object")
-        model_train_artifacts = ModelTrainArtifacts(trained_model_path =self.model_train_config.TRAINED_MODEL_NAME,
+        model_train_artifacts = ModelTrainArtifacts(trained_model_path =self.model_train_config.MODEL_TRAIN_ARTIFACTS_PATH,
                                                    x_test_path =self.model_train_config.X_TEST_FILE_PATH,
                                                   y_test_path = self.model_train_config.Y_TEST_FILE_PATH)
         return model_train_artifacts

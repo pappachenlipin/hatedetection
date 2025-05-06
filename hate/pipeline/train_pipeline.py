@@ -10,7 +10,7 @@ from hate.components.data_ingestion import DataIngestion
 from hate.components.data_transformation import DataTransformation
 from hate.components.model_evaluation import ModelEvaluation
 from hate.components.model_train import ModelTrain
-from hate.components.model_push import ModelPush
+from hate.components.model_push import ModelPusher
 class Train_pipeline():
     def __init__(self):
         self.data_ingestion_config = DataIngestionConfig()
@@ -61,7 +61,7 @@ class Train_pipeline():
     def start_model_push(self):
         logging.info("Entered the start model push activity")
         try:
-            model_push = ModelPush(self.model_push_config)
+            model_push = ModelPusher(self.model_push_config)
             model_push_artifacts = model_push.initiate_model_push()
             return model_push_artifacts
         except Exception as e:
